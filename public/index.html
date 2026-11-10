@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RescueGrid emergency response intelligence system for incident monitoring, emergency prioritization, resource assignment and route planning.">
+  <title>RescueGrid | Emergency Response System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header>
+    <h1>RescueGrid</h1>
+    <p>Emergency Response Intelligence System</p>
+    <div id="connectionStatus" class="connection-status">Connecting to server...</div>
+  </header>
+
+  <main>
+    <section class="stats" aria-label="Dashboard statistics">
+      <div class="card"><h3>Total Incidents</h3><p id="incidentCount">0</p></div>
+      <div class="card"><h3>Available Ambulances</h3><p id="ambulanceCount">0</p></div>
+      <div class="card"><h3>Hospitals</h3><p id="hospitalCount">0</p></div>
+    </section>
+
+    <section class="panel">
+      <h2>Emergency Incidents</h2>
+      <div id="incidentList" aria-live="polite">Loading incidents...</div>
+    </section>
+
+    <section class="panel">
+      <h2>RescueGrid Emergency Map</h2>
+      <p>View sample locations and hospitals on the map.</p>
+      <div id="rescueMap" role="region" aria-label="Emergency response map"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Route Planner</h2>
+      <label for="startLocation">Start Location:</label>
+      <select id="startLocation">
+        <option value="A">Location A</option><option value="B">Location B</option>
+        <option value="C">Location C</option><option value="D">Location D</option><option value="E">Location E</option>
+      </select>
+      <label for="endLocation">Destination:</label>
+      <select id="endLocation">
+        <option value="E">Location E</option><option value="A">Location A</option>
+        <option value="B">Location B</option><option value="C">Location C</option><option value="D">Location D</option>
+      </select>
+      <button id="routeButton" type="button">Calculate Shortest Route</button>
+      <p id="routeResult" aria-live="polite">Select locations to calculate a route.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Emergency Priority Classification</h2>
+      <label for="emergencyType">Emergency Type:</label>
+      <select id="emergencyType">
+        <option value="accident">Road Accident</option><option value="fire">Fire</option><option value="medical">Medical Emergency</option>
+      </select>
+      <label for="severity">Severity:</label>
+      <select id="severity">
+        <option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+      </select>
+      <button id="priorityButton" type="button">Classify Emergency</button>
+      <p id="priorityResult" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Ambulance &amp; Hospital Assignment</h2>
+      <label for="resourceEmergency">Select Emergency:</label>
+      <select id="resourceEmergency"></select>
+      <label for="ambulance">Available Ambulance:</label>
+      <select id="ambulance"></select>
+      <label for="hospital">Hospital:</label>
+      <select id="hospital"></select>
+      <button id="assignButton" type="button">Assign Resources</button>
+      <p id="assignmentResult" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Manage Emergency Incidents</h2>
+      <label for="newIncident">Incident Details:</label>
+      <input type="text" id="newIncident" placeholder="Enter emergency incident details" maxlength="200">
+      <button id="addIncidentButton" type="button">Add Incident</button>
+      <h3>Managed Incidents</h3>
+      <ul id="managedIncidentList" aria-live="polite"><li>Loading...</li></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 RescueGrid | Emergency Response Intelligence System</p>
+    <p>Academic demonstration project using sample data. Not for real emergency dispatch.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
